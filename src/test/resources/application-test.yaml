@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: postgres
+    password: fenix000
+    url: jdbc:h2:mem:batch
+        
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
