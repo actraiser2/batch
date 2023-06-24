@@ -2,3 +2,4 @@
 .editorconfig
 .gitattributes
 .settings
+/config
