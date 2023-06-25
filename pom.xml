@@ -93,7 +93,7 @@
 						</exclude>
 					</excludes>
 					<arguments>
-						<argument>startDate=2023-06-24</argument>
+						<argument>startDate=2023-06-25</argument>
 					</arguments>
 					
 				</configuration>
