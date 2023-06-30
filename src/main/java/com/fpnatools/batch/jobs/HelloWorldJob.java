@@ -2,6 +2,7 @@ package com.fpnatools.batch.jobs;
 
 import java.util.Date;
 
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersIncrementer;
@@ -31,10 +32,10 @@ public class HelloWorldJob {
 	private JobBuilderFactory jobBuilderFactory;
 	private StepBuilderFactory stepBuilderFactory;
 	
-	/*@Bean
+	@Bean
 	public Step helloWorlStep() {
 		return stepBuilderFactory.get("step1").tasklet(helloWorldTaskLet(null, null)).build();
-	}*/
+	}
 	
 	@Bean
 	public Step helloWorlChunk() {
@@ -50,6 +51,9 @@ public class HelloWorldJob {
 		return jobBuilderFactory.get("helloWorld").
 				start(helloWorlChunk()).
 				incrementer(jobParametersIncerementer()).
+				on(ExitStatus.COMPLETED.getExitCode()).
+				to(helloWorlStep()).end().
+				
 				build();
 	}
 	
